@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SDK-TECH</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to SDK-TECH</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#upload">Upload Profile</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home">
+            <h2>Home of Knowledge</h2>
+            <p>Follow us on YouTube, Facebook, Instagram, TikTok, and other social media platforms.</p>
+        </section>
+
+        <section id="register">
+            <h2>Create Account</h2>
+            <form action="register.php" method="post">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+
+                <button type="submit">Create Account</button>
+            </form>
+        </section>
+
+        <section id="upload">
+            <h2>Upload Profile Picture</h2>
+            <form action="upload.php" method="post" enctype="multipart/form-data">
+                <input type="file" name="profile_picture" required>
+                <button type="submit">Upload</button>
+            </form>
+        </section>
+
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <form id="contact-form">
+                <label for="name">Name:</label>
+                <input type="text" id="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" required>
+
+                <label for="message">Message:</label>
+                <textarea id="message" required></textarea>
+
+                <button type="submit">Send Message</button>
+            </form>
+            <div id="response-message">We are here to help.</div>
+        </section>
+
+        <!-- AI Chatbot Section -->
+        <section id="chatbot">
+            <h2>AI Chatbot</h2>
+            <div id="chatbox">
+                <div id="messages"></div>
+                <input type="text" id="user-input" placeholder="Type your message...">
+                <button onclick="sendMessage()">Send</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 SDK-TECH. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function sendMessage() {
+            const userInput = document.getElementById('user-input').value;
+            const messages = document.getElementById('messages');
+
+            if (userInput.trim()) {
+                // Display user message
+                const userMessage = document.createElement('div');
+                userMessage.textContent = "You: " + userInput;
+                messages.appendChild(userMessage);
+
+                // Simulate AI response (This is where you'd integrate with a real AI service)
+                const aiResponse = document.createElement('div');
+                aiResponse.textContent = "AI: This is a sample response. How can I help you further?";
+                messages.appendChild(aiResponse);
+
+                // Clear input
+                document.getElementById('user-input').value = '';
+                messages.scrollTop = messages.scrollHeight; // Scroll to the bottom
+            }
+        }
+    </script>
+</body>
+</html>
